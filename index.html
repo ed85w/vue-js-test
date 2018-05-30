@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Vue.js tutorial</title>
+  
+  <link href="style.css" rel="stylesheet">
+  <!-- vue.js development version, includes helpful console warnings -->
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+</head>
+<body>
+  <div id="vue-app">
+    <h1>{{greet('Morning')}}</h1>
+    <h1>{{name}}</h1>
+    <h1>Job: {{job}}</h1>
+
+    <!-- data binding example -->
+    <a v-bind:href="website">Ed Walker Web</a> 
+    <!-- a:href also works -->
+
+    <!-- another data binding example -->
+    <!-- <input type="text" v-bind:value="job"/> -->
+
+    
+    <p v-html="websiteTag"></p>
+
+
+  </div>
+  
+  <script src="app.js"></script>
+</body>
+</html>
