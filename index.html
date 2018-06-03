@@ -24,9 +24,16 @@
     <!-- another data binding example -->
     <!-- <input type="text" v-bind:value="job"/> -->
 
-    
     <p v-html="websiteTag"></p>
 
+    <h1>Events</h1>
+    <button v-on:click="addYear(1)">Add a Year</button>
+    <button v-on:click="subtractYear(1)">Subtract a Year</button>
+    <button v-on:dblclick="addYear(10)">Add 10 Years</button>
+    <button v-on:dblclick="subtractYear(10)">Subtract 10 Years</button>
+    <!-- NOTE - @ is shorthand for v-on: -->
+    <p>May age is: {{age}}</p>
+    <div id="canvas" v-on:mousemove="updateXY">{{x}}, {{y}}</div>
 
   </div>
   
