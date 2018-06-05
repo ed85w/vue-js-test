@@ -18,7 +18,7 @@
     <h1>Job: {{job}}</h1>
 
     <!-- data binding example -->
-    <a v-bind:href="website">Ed Walker Web</a> 
+    <a v-bind:href="website">Ed Walker Web</a>
     <!-- a:href also works -->
 
     <!-- another data binding example -->
@@ -27,13 +27,29 @@
     <p v-html="websiteTag"></p>
 
     <h1>Events</h1>
-    <button v-on:click="addYear(1)">Add a Year</button>
+    <!-- <button v-on:click="addYear(1)">Add a Year</button> -->
+
+    <!-- same as above, but with event modifier -->
+    <button v-on:click.once="addYear(1)">Add a Year</button>
     <button v-on:click="subtractYear(1)">Subtract a Year</button>
     <button v-on:dblclick="addYear(10)">Add 10 Years</button>
     <button v-on:dblclick="subtractYear(10)">Subtract 10 Years</button>
     <!-- NOTE - @ is shorthand for v-on: -->
     <p>May age is: {{age}}</p>
     <div id="canvas" v-on:mousemove="updateXY">{{x}}, {{y}}</div>
+
+    <!-- event modifier .prevent prevents default event -->
+    <a v-on:click.prevent="click" href="http://edwalkerweb.com">Ed Walker Web</a>
+
+    <h1>Keyboard Events & Data Binding</h1>
+    <label>Name:</label>
+    <!-- input textbox = runs function 'logName' name when enter pressed, imput data is bound to 'bindName' var -->
+    <input type="text" v-on:keyup.enter="logName" v-model="bindName"/>
+    <span>{{ bindName }}</span>
+    <label>Age:</label>
+    <!-- textbox logs name when enter pressed -->
+    <input type="text" v-on:keyup.alt.enter="logAge" v-model="bindAge"/>
+    <span>{{ bindAge }}</span>
 
   </div>
   

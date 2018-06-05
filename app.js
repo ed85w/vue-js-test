@@ -9,7 +9,11 @@ new Vue ({
 
     //co-ordinates for axis
     x: 0,
-    y: 0
+    y: 0,
+
+    // vars for binding
+    bindName: '',
+    bindAge: '',
   },
   methods: {
     greet: function(time){
@@ -30,6 +34,18 @@ new Vue ({
     updateXY: function(event){
       this.x = event.offsetX;
       this.y = event.offsetY;
-    }
+    },
+
+    // example function, alerts
+    click: function(){
+      alert ("You clicked me!");
+    },
+
+    logName: function(){
+      console.log('you entered your name');
+    },
+    logAge: function(){
+      console.log('you entered your age');
+    },
   }
 });
