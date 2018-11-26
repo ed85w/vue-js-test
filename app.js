@@ -1,21 +1,12 @@
-Vue.component('greeting', {
-  template: '<p>I am {{ name }}. <button v-on:click="changeName">Change Name</button></p>',
-  data: function(){
-    return {
-      name: 'Yoshi'
-    }
+new Vue({
+  el: '#vue-app',
+  data: {
+    output: 'nothing',
   },
   methods: {
-    changeName: function(){
-      this.name = 'Mario';
+    readRefs: function(){
+      console.log(this.$refs.test.innerText); //this will log innerText of 'test' div
+      this.output = this.$refs.thisisaninput.value;
     }
   }
-});
-
-new Vue({
-  el: '#vue-app-one'
-});
-
-new Vue({
-  el: '#vue-app-two'
 });
