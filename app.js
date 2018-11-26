@@ -1,35 +1,21 @@
-var one = new Vue ({
-  el: '#vue-app-one',
-  data: {
-    title: 'Vue App One'
+Vue.component('greeting', {
+  template: '<p>I am {{ name }}. <button v-on:click="changeName">Change Name</button></p>',
+  data: function(){
+    return {
+      name: 'Yoshi'
+    }
   },
   methods: {
-  },
-  computed: {
-    greet: function(){
-      return 'Hello from app one';
+    changeName: function(){
+      this.name = 'Mario';
     }
   }
-
 });
 
-var two = new Vue ({
-  el: '#vue-app-two',
-  data: {
-    title: 'Vue App Two'
-  },
-  methods: {
-    changeTitle: function(){
-      one.title = "Title changed!"
-    }
-  },
-  computed: {
-    greet: function(){
-      return 'Hello from app two';
-    }
-  }
-
+new Vue({
+  el: '#vue-app-one'
 });
 
-// properties can also be accessed/changed from outside vue instance
-two.title = "Changed from outside";
+new Vue({
+  el: '#vue-app-two'
+});
