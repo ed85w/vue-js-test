@@ -1,7 +1,7 @@
 <template>
   <div>
     <app-header></app-header>
-    <app-ninjas></app-ninjas>
+    <app-ninjas v-bind:ninjasEtc="ninjasEtc"></app-ninjas><!-- v-bind ninjas data below to app-ninjas -->
     <app-footer></app-footer>
   </div>
 
@@ -22,6 +22,14 @@ export default {
   },
   data () {
     return {
+      ninjasEtc: [
+        {name: 'Ryu', speciality: 'Vue Components', show: false},
+        {name: 'Ken', speciality: 'Something else', show: false},
+        {name: 'Ehonda', speciality: 'Eating pies', show: false},
+        {name: 'Kami', speciality: 'Kicking things', show: false},
+        {name: 'Person', speciality: 'Being a Person', show: false},
+        {name: 'Thing', speciality: 'Not Sure', show: false},
+      ]
     }
   }
 }
