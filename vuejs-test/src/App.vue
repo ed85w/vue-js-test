@@ -1,8 +1,8 @@
 <template>
   <div>
-    <app-header></app-header>
+    <app-header v-bind:title="title"></app-header>
     <app-ninjas v-bind:ninjasEtc="ninjasEtc"></app-ninjas><!-- v-bind ninjas data below to app-ninjas -->
-    <app-footer></app-footer>
+    <app-footer v-bind:title="title"></app-footer>
   </div>
 
 </template>
@@ -22,6 +22,8 @@ export default {
   },
   data () {
     return {
+      //primitive = strings, booleans & numbers
+      //reference = arrays, objects
       ninjasEtc: [
         {name: 'Ryu', speciality: 'Vue Components', show: false},
         {name: 'Ken', speciality: 'Something else', show: false},
@@ -29,7 +31,8 @@ export default {
         {name: 'Kami', speciality: 'Kicking things', show: false},
         {name: 'Person', speciality: 'Being a Person', show: false},
         {name: 'Thing', speciality: 'Not Sure', show: false},
-      ]
+      ],
+      title: "Vue Ninjas App"
     }
   }
 }
