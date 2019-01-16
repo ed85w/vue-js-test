@@ -6,6 +6,8 @@
 
 <script>
 
+import {bus} from '../main';
+
 export default {
   props: {
     title: {
@@ -14,13 +16,13 @@ export default {
   },
   data () {
     return {
+      title: 'Vue Ninjas'
     }
   },
   methods: {
-    //event (allows root data (app.vue)  change for primitive data types)
     changeTitle: function(){
-      //$emit emits event. Event name is 1st param 'changeTitleRoot'. Can also send data as 2nd param, in this case 'Vue Wizards'
-      this.$emit('changeTitleRoot', 'Vue Wizards');
+      this.title = 'Vue Wizards'
+      bus.$emit('titleChanged', 'Vue Wizards')
     }
   }
 }

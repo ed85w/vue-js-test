@@ -6,6 +6,8 @@
 
 <script>
 
+import {bus} from '../main';
+
 export default {
     props: {
         title: {
@@ -16,6 +18,12 @@ export default {
         return {
             copyright: 'Copyright 2019'
         }
+    },
+    //lifecycle hook, fired when compnent is created
+    created(){
+        bus.$on('titleChanged', (data) => { //title changed is defined in header.vue 2nd param (data) is 'Vue Wizards', also defined in header.vue
+            this.title = data;
+        })
     }
 }
 </script>
