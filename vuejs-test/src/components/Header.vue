@@ -17,8 +17,10 @@ export default {
     }
   },
   methods: {
+    //event (allows root data (app.vue)  change for primitive data types)
     changeTitle: function(){
-      this.title = "Vue Wizards App"
+      //$emit emits event. Event name is 1st param 'changeTitleRoot'. Can also send data as 2nd param, in this case 'Vue Wizards'
+      this.$emit('changeTitleRoot', 'Vue Wizards');
     }
   }
 }

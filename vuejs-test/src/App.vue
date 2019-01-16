@@ -1,6 +1,6 @@
 <template>
   <div>
-    <app-header v-bind:title="title"></app-header>
+    <app-header v-bind:title="title" v-on:changeTitleRoot="updateTitle($event)"></app-header><!-- $event is event data (e.g 'Vue Wizards' from Header.vue file) -->
     <app-ninjas v-bind:ninjasEtc="ninjasEtc"></app-ninjas><!-- v-bind ninjas data below to app-ninjas -->
     <app-footer v-bind:title="title"></app-footer>
   </div>
@@ -34,6 +34,12 @@ export default {
       ],
       title: "Vue Ninjas App"
     }
+  },
+  methods:{
+    updateTitle: function(updatedTitle){
+      this.title = updatedTitle
+    }
+
   }
 }
 
