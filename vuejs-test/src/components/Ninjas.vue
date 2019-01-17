@@ -14,8 +14,6 @@
 <script>
 
 export default {
-    // get data from App.vue
-    // props: ['ninjasEtc'], (can be done like this , or...)
     props: {
         ninjasEtc: {
             type: Array,
@@ -30,7 +28,39 @@ export default {
         deleteNinja: function(){
             this.ninjasEtc.pop();     
         }
+    },
+    // lifecycle hooks
+
+    //occurs before component is created
+    beforeCreate(){
+        alert('beforeCreate');
+    },
+
+    //occurs after component is created (good time to fetch from DB)
+    created(){
+        alert('created');
+    },
+
+    //before component is mounted
+    beforeMount(){
+        alert('beforeMount');
+    },
+
+    //after component has been mounted (good time to manipulate DOM)
+    mounted(){
+        alert('mounted');
+    },
+
+    //if vue detects change, runs this before change
+    beforeUpdate(){
+        alert('beforeUpdate');
+    },
+
+    //if vue detects change, runs this after change and re-render
+    updated(){
+        alert('updated');
     }
+
 }
 </script>
 
