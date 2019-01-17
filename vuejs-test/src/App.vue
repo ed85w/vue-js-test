@@ -1,44 +1,40 @@
 <template>
   <div>
-    <app-header v-bind:title="title" ></app-header>
-    <app-ninjas v-bind:ninjasEtc="ninjasEtc"></app-ninjas><!-- v-bind ninjas data below to app-ninjas -->
-    <app-footer v-bind:title="title"></app-footer>
-  </div>
+    <form-helper>
+      <div slot="form-header-slot">
+        <h3>This is the title of the form</h3>
+        <p>Info about the form</p>
+      </div>
 
+      <div slot="form-fields-slot">
+        <input type="text" placeholder="name" required>
+        <input type="password" placeholder="password" required>
+      </div>
+
+      <div slot="form-controls">
+        <button v-on:click="handleSubmit">Submit</button>
+      </div>
+    </form-helper>
+  </div>
 </template>
 
 <script>
 
-import Header from './components/Header.vue';
-import Footer from './components/Footer.vue';
-import NinjaComponent from './components/Ninjas.vue';
-
+import formHelper from './components/formHelper.vue'
 
 export default {
   components: {
-    'app-header': Header,
-    'app-footer': Footer,
-    'app-ninjas': NinjaComponent
+    'form-helper': formHelper
   },
-  data () {
+  data(){
     return {
-      //primitive = strings, booleans & numbers
-      //reference = arrays, objects
-      ninjasEtc: [
-        {name: 'Ryu', speciality: 'Vue Components', show: false},
-        {name: 'Ken', speciality: 'Something else', show: false},
-        {name: 'Ehonda', speciality: 'Eating pies', show: false},
-        {name: 'Kami', speciality: 'Kicking things', show: false},
-        {name: 'Person', speciality: 'Being a Person', show: false},
-        {name: 'Thing', speciality: 'Not Sure', show: false},
-      ],
-      title: "Vue Ninjas App"
+      title: 'I am a dynamic slot title'
     }
   },
-  methods:{
+  methods: {
+
   }
 }
-
 </script>
 
 <style> 
