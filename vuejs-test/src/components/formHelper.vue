@@ -1,14 +1,14 @@
-// this is basically a template, can be styled in css, then content added in app.vue (for example) using slots
+// this is basically a template, can be styled in css, then content added in formOne.vue (for example) using slots
 
 <template>
     <div>
         <h1>Please fill in our form...</h1>
         <form>
             <div id="form-header">
-                <slot name="form-header-slot"></slot>
+                <slot name="form-header"></slot>
             </div>
             <div id="form-fields">
-                <slot name="form-fields-slot"></slot>
+                <slot name="form-fields"></slot>
             </div>
             <div id="form-controls">
                 <slot name="form-controls"></slot>
