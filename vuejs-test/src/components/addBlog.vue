@@ -1,7 +1,8 @@
 <template>
   <div id="add-blog">
     <h2>Add a New Blog Post</h2>
-    <form>
+    <!-- form is hidden if submitted=true -->
+    <form v-if="!submitted">
       <label>Blog Title:</label>
       <!-- .lazy means that input will only show up in preview (div below) once tab is pressed -->
       <input type="text" v-model.lazy="blog.title" required>
@@ -23,7 +24,16 @@
       <select v-model="blog.author">
         <option v-for="author in authors">{{author}}</option>
       </select>
+
+      <!-- .prevent prevents default behaviour -->
+      <button v-on:click.prevent="post">Add Blog</button>
+
     </form>
+
+    <!-- only visible if submitted=true -->
+    <div v-if="submitted">
+      <h3>Thanks for adding your post</h3>
+    </div>
 
     <div id="preview">
       <h3>Preview Blog</h3>
@@ -52,11 +62,25 @@ export default {
         categories: [],
         author: ""
       },
-      authors:['Steven King', 'Tom King Smith', 'JRR Tolkien']
+
+      // note authors not in blog object
+      authors:['Steven King', 'Tom King Smith', 'JRR Tolkien'],
+      submitted: false
     }
   },
   methods: {
-
+    post: function(){
+      // using VueResource .post(where to send, what to send)
+      this.$http.post('https://jsonplaceholder.typicode.com/posts', {
+        title: this.blog.title,
+        body: this.blog.content,
+        userID: 1
+      }).then(function(data){
+        console.log(data);
+        this.submitted=true;
+      });
+      // .then is a promise. runs function after post completes
+    }
   }
 }
 </script>
