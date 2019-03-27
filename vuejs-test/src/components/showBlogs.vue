@@ -2,9 +2,9 @@
   <div v-theme:column=" 'narrow' " id="show-blogs">
     <h1>All Blog Articles</h1>
     <div v-for="blog in blogs" class="single-blog">
-      <!-- v-rainbow is example of custom directive -->
-      <h2 v-rainbow>{{blog.title}}</h2>
-      <article>{{blog.body}}</article>
+      <!-- v-rainbow is example of custom directive. to-uppercase is an example of a filter -->
+      <h2 v-rainbow>{{blog.title | to-uppercase}}</h2>
+      <article>{{blog.body | snippet}}</article>
     </div>
 
   </div>

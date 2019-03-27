@@ -4,7 +4,8 @@ import VueResource from 'vue-resource'
 
 Vue.use(VueResource);
 
-// Custom directives
+// CUSTOM DIRECTIVES
+
 Vue.directive('rainbow', { //directive name
   bind(el, binding, vnode) { // run on bind lifecycle hook (when directive is bound to element)
     // apply to element style color # + random 6 string num (e.g random #color)
@@ -26,6 +27,22 @@ Vue.directive('theme', {
     }
   }
 })
+
+
+// FILTERS  
+
+//filter to covert text to upper case
+Vue.filter('to-uppercase', function(value){
+  return value.toUpperCase();
+})
+
+//filter to trim text to 100 characters and add ... to end
+Vue.filter('snippet', function(value){
+  return value.slice(0, 100) + "...";
+})
+
+
+
 
 new Vue({
   el: '#app',
