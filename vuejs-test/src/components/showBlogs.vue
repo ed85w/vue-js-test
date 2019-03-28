@@ -1,8 +1,13 @@
 <template>
   <div v-theme:column=" 'narrow' " id="show-blogs">
     <h1>All Blog Articles</h1>
-    <div v-for="blog in blogs" class="single-blog">
-      <!-- v-rainbow is example of custom directive. to-uppercase is an example of a filter -->
+
+    <!-- input for search field, note v-model is bound to data (search) -->
+    <input type="text" v-model="search" placeholder="search blogs"/>
+
+    <div v-for="blog in filteredBlogs" class="single-blog">
+
+      <!-- v-rainbow is example of custom directive. to-uppercase is an example of a filter (see main.js) -->
       <h2 v-rainbow>{{blog.title | to-uppercase}}</h2>
       <article>{{blog.body | snippet}}</article>
     </div>
@@ -16,7 +21,8 @@ export default {
   data() {
     return{
       // empty array for storing data from get
-      blogs: []
+      blogs: [],
+      search: ""
     }
   },
   methods: {
@@ -28,8 +34,18 @@ export default {
       //get first 10 instances of array (body property)
       this.blogs = data.body.slice(0,10)
     })
+  },
+  // computed property (for search filter)
+  computed: {
+    filteredBlogs: function(){
+      return this.blogs.filter((blog) => {
+        return blog.title.match(this.search);
+      });
+    }
   }
+    
 }
+
 </script>
 
 <style>
