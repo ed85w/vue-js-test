@@ -1,6 +1,6 @@
 <template>
   <div v-theme:column=" 'narrow' " id="show-blogs">
-    <h1>All Blog Articles</h1>
+    <h1>List Blog Titles</h1>
 
     <!-- input for search field, note v-model is bound to data (search) -->
     <input type="text" v-model="search" placeholder="search blogs"/>
@@ -16,6 +16,7 @@
 </template>
 
 <script>
+import searchMixin from '../mixins/searchMixin';
 
 export default {
   data() {
@@ -35,7 +36,7 @@ export default {
       this.blogs = data.body.slice(0,10)
     })
   },
-  // locally registered computed property (for search filter)
+  // computed property (for search filter)
   computed: {
     filteredBlogs: function(){
       return this.blogs.filter((blog) => {
@@ -49,7 +50,6 @@ export default {
       return value.toUpperCase();
     }
   },
-
   // locally registered directive
   directives: {
     'rainbow': {
@@ -58,7 +58,8 @@ export default {
       }
     }
   },
-   
+  mixins: [searchMixin]
+    
 }
 
 </script>
