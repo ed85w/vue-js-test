@@ -8,7 +8,7 @@
     <div v-for="blog in filteredBlogs" class="single-blog">
 
       <!-- v-rainbow is example of custom directive. to-uppercase is an example of a filter (see main.js) -->
-      <h2 v-rainbow>{{blog.title | toUppercase }}</h2>
+      <router-link v-bind:to="'/blog/' + blog.id"><h2 v-rainbow>{{blog.title | toUppercase }}</h2></router-link>
       <article>{{blog.body | snippet}}</article>
     </div>
 
