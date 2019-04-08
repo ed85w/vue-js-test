@@ -71,15 +71,12 @@ export default {
   methods: {
     post: function(){
       // using VueResource .post(where to send, what to send)
-      this.$http.post('https://jsonplaceholder.typicode.com/posts', {
-        title: this.blog.title,
-        body: this.blog.content,
-        userID: 1
-      }).then(function(data){
+      this.$http.post('https://vue-js-test-1f71d.firebaseio.com/posts.json', this.blog).then(function(data){
         console.log(data);
+        // .then is a promise. runs function after post completes
+        // modifies data bool above to true on successful post
         this.submitted=true;
       });
-      // .then is a promise. runs function after post completes
     }
   }
 }
