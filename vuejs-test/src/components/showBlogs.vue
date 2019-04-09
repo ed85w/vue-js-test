@@ -9,7 +9,7 @@
 
       <!-- v-rainbow is example of custom directive. to-uppercase is an example of a filter (see main.js) -->
       <router-link v-bind:to="'/blog/' + blog.id"><h2 v-rainbow>{{blog.title | toUppercase }}</h2></router-link>
-      <article>{{blog.body | snippet}}</article>
+      <article>{{blog.content | snippet}}</article>
     </div>
 
   </div>
@@ -29,10 +29,20 @@ export default {
 
   },
   created(){ //runs when page created 
-    this.$http.get('https://jsonplaceholder.typicode.com/posts').then(function(data){
-      console.log(data);
-      //get first 10 instances of array (body property)
-      this.blogs = data.body.slice(0,10)
+    this.$http.get('https://vue-js-test-1f71d.firebaseio.com/posts.json').then(function(data){
+      // .json is a promise function (so use then after)
+      return data.json();
+    }).then(function(data){
+      var blogsArray = [];
+      //data is returned as an object which contains the blogs (as objects) each of which has a key (unique id)
+      for (let key in data) {
+        // console.log(key);
+        console.log(data[key]);
+        data[key].id = key;
+        blogsArray.push(data[key])
+      }
+      // console.log(blogsArray);
+      this.blogs = blogsArray
     })
   },
   // locally registered computed property (for search filter)
